@@ -1,4 +1,4 @@
-package enock.projeto.api.respository;
+package enock.projeto.api.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import enock.projeto.api.model.Usuario;
 
 @Repository
-public class UserRespository {
+public class UserRepository {
 	public void save(Usuario u) {
 		if(u.getId() == null) {
 			System.out.println("save ");
@@ -17,8 +17,13 @@ public class UserRespository {
 			System.out.println("Update ");
 		}System.out.println(u);
 	}
+	public void update(Usuario usuario){
+        System.out.println("UPDATE - Recebendo o usuário na camada de repositório");
+        System.out.println(usuario);
+    }
+	
 	public void deleteById(Integer id) {
-		System.out.println(String.format("delete/id - recebendo o id: %d para excluir", id));
+        System.out.println(String.format("DELETE/id - Recebendo o id: %d para excluir um usuário", id));
 		System.out.println(id);
 	}
 	public List<Usuario> findAll(){
@@ -29,13 +34,9 @@ public class UserRespository {
 		return u;
 	}
 	public Usuario findById(Integer id) {
-		System.out.println(String.format("FIND/id - Recebendo o id: %s para localizar um usuário", id));
+        System.out.println(String.format("FIND/id - Recebendo o id: %d para localizar um usuário", id));
 		return new Usuario(1, "enock", "123");
 	}
 	
-	public Usuario findByUsername(String username) {
-		System.out.println(String.format("FIND/username - Recebendo o username: %s para localizar um usuário", username));
-		return new Usuario(1, "enock", "123");
-	}
 	
 }
